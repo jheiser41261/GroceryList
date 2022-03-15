@@ -13,6 +13,23 @@
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
+    <!--
+        Maven is a dependency manager and build tool
+
+        Two main packaging formats:
+        - .jar
+        - .war
+
+        Maven has a build lifecycle:
+        - mvn validate: Validates that the project is a correct Maven project structure
+        - mvn compile: Compiles our source code to .class files
+        - mvn test: Runs all of our unit tests
+        - mvn package: Packages the project into a correct .jar or .war file
+        - mvn verify: Integration tests
+        - mvn install: Makes the project available for local Maven dependencies
+        - mvn deploy: Makes the project available remotely
+    -->
+
     <dependencies>
         <dependency>
             <groupId>org.postgresql</groupId>

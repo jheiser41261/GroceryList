@@ -38,6 +38,33 @@ public class GroceryListDAOImpl implements GroceryListDAO {
     }
 
     @Override
+    public GroceryList getOneList(Integer listId) {
+        GroceryList groceryList = null;
+
+        try(Connection conn = ConnectionUtil.getConnection()){
+
+            String sql = "SELECT * FROM grocery_list WHERE list_id = ?;";
+
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, listId);
+
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                groceryList = new GroceryList(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getInt(3)
+                );
+            }
+
+        } catch(SQLException sqle){
+            sqle.printStackTrace();
+        }
+
+        return groceryList;
+    }
+
+    @Override
     public void createList(GroceryList groceryList) {
         try(Connection conn = ConnectionUtil.getConnection()){
             String sql = "INSERT INTO grocery_list (list_name, user_id_fk) VALUES (?, ?);";
@@ -68,4 +95,6 @@ public class GroceryListDAOImpl implements GroceryListDAO {
             sqle.printStackTrace();
         }
     }
+
+
 }

@@ -32,9 +32,6 @@ public class GroceryItemDAOImpl implements GroceryItemDAO {
                         rs.getInt(5)
                 ));
             }
-
-            conn.close();
-
         } catch(SQLException sqle){
             sqle.printStackTrace();
         }

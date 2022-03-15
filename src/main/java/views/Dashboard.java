@@ -22,7 +22,15 @@ public class Dashboard {
                     System.out.println(groceryListService.getAllListsGivenUserId(user.getId()));
                     break;
                 case "2":
-                    //todo go to a specific list
+                    System.out.print("List ID: ");
+                    String listId = sc.nextLine();
+
+                    if(groceryListService.isListOurs(user, Integer.parseInt(listId))){
+                        GroceryListView.view(Integer.parseInt(listId));
+                    } else{
+                        System.out.println("INVALID INPUT");
+                    }
+
                     break;
                 case "3":
                     System.out.print("List Name: ");
@@ -33,9 +41,9 @@ public class Dashboard {
                 case "4":
                     System.out.println(groceryListService.getAllListsGivenUserId(user.getId()));
                     System.out.print("List ID: ");
-                    String listId = sc.nextLine();
-                    groceryListService.deleteList(Integer.parseInt(listId));
-                    System.out.println("List number " + listId + " was deleted");
+                    String liId = sc.nextLine();
+                    groceryListService.deleteList(Integer.parseInt(liId));
+                    System.out.println("List number " + liId + " was deleted");
                     break;
                 case "0":
                     running = false;
